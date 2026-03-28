@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 const tabs = [
   { name: "Home", path: "/" },
   { name: "Pricing", path: "/price" },
-  { name: "Login", path: "/loging" },
+  { name: "Login", path: "/login" },
   { name: "Get Started", path: "/getstarted" },
 ];
 

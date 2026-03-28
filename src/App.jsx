@@ -4,12 +4,9 @@ import Navbar from "./Header/Navbar";
 import Section2 from "./body/Section2";
 import Price from "./Pages/Pricing/Price";
 import Loging from "./Pages/Login/Loging";
+import Getstarted from "./Pages/getstarted";
 
-const Home = () => <Section2 />;
-
-const GetStarted = () => (
-  <h1 className="text-white text-center mt-20">Get Started Page</h1>
-);
+const Home = () => <Section2 />
 
 const App = () => {
   return (
@@ -19,8 +16,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/price" element={<Price />} />
-        <Route path="/loging" element={<Loging />} />
-        <Route path="/getstarted" element={<GetStarted />} />
+        <Route path="/login" element={<Loging />} />
+        <Route path="/getstarted" element={<Getstarted />} />
       </Routes>
     </div>
   );
