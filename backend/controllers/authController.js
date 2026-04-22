@@ -31,18 +31,19 @@ export const signup = async (req, res) => {
       password: hashedPassword
     });
 
-    return res.status(201).json({
+    res.status(201).json({
       msg: "User registered successfully",
       token: generateToken(user._id),
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        profilePic: user.profilePic || ""
       }
     });
 
   } catch (error) {
-    return res.status(500).json({ msg: error.message });
+    res.status(500).json({ msg: error.message });
   }
 };
 
@@ -51,30 +52,56 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // 1. Check user exists
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ msg: "User not found" });
     }
 
-    // 2. Check password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ msg: "Invalid credentials" });
     }
 
-    // 3. Send success response (FIXED HERE ✅)
-    return res.status(200).json({
+    res.status(200).json({
       msg: "Login successful",
       token: generateToken(user._id),
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        profilePic: user.profilePic || ""
       }
     });
 
   } catch (error) {
-    return res.status(500).json({ msg: error.message });
+    res.status(500).json({ msg: error.message });
+  }
+};
+
+// 🔥 UPDATE PROFILE
+export const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const { name, email, profilePic } = req.body;
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { name, email, profilePic },
+      { new: true }
+    );
+
+    res.json({
+      msg: "Profile updated",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        profilePic: user.profilePic || ""
+      }
+    });
+
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
   }
 };

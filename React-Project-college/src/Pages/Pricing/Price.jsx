@@ -12,9 +12,9 @@ const Price = () => {
         </p>
       </div>
     <div className="grid md:grid-cols-3">
-      <Card name='Free' price='$0/Mo' features= {['Basic Access', 'Limited Support']}/>
-      <Card name='Pro' price='$19/Mo' features={['Unlimited Access', 'Priority Support', 'Advanced Tools']}/>
-      <Card name='Enterprise' price='$99/Mo' features={['Custom Solutions', '24/7 Support', 'API Access']}/>
+      <Card name='Free' price='₹0/Mo' features= {['Basic Access', 'Limited Support']}/>
+      <Card name='Pro' price='₹399/Mo' features={['Unlimited Access', 'Priority Support', 'Advanced Tools']}/>
+      <Card name='Enterprise' price='₹499/Mo' features={['Custom Solutions', '24/7 Support', 'API Access']}/>
     </div>
     </>
   )

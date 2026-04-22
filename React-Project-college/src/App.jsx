@@ -5,6 +5,7 @@ import Section2 from "./body/Section2";
 import Price from "./Pages/Pricing/Price";
 import Loging from "./Pages/Login/Loging";
 import Getstarted from "./Pages/getstarted";
+import Profile from "./Pages/Profile";
 
 const Home = () => <Section2 />
 
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/price" element={<Price />} />
         <Route path="/login" element={<Loging />} />
         <Route path="/getstarted" element={<Getstarted />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
